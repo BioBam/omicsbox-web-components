@@ -1,0 +1,37 @@
+{
+  "name": "echarts_omicsbox",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Carlos Martínez",
+  "private": true,
+  "scripts": {
+    "watch": "node ./watch.js",
+    "build": "node ./build.js",
+    "postinstall": "empathy install --only lit -a node_modules/"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans": "^4.2.1",
+    "@fontsource/roboto": "^4.2.1",
+    "@fontsource/roboto-mono": "^4.2.2",
+    "async": "^3.2.0",
+    "lit": "^2.0.0-rc.2",
+    "merge": "^1.2.1",
+    "mixwith": "^0.1.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "urijs": "^1.19.2",
+    "web-libraries": "git+ssh://git@github.com:BioBam/web-libraries.git#develop"
+  },
+  "devDependencies": {
+    "@0xcda7a/empathy": "^0.0.9",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@web/rollup-plugin-copy": "^0.2.0",
+    "@web/rollup-plugin-html": "^1.7.0",
+    "rollup": "^2.49.0",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-summary": "^1.3.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "shelljs": "^0.8.3",
+    "terser": "^4.8.0",
+    "watch": "^1.0.2"
+  }
+}

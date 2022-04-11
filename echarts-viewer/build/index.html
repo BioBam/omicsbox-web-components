@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <title>OmicsBox Chart Viewer</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- Chrome for Android theme color -->
+    <!--<meta name="theme-color" content="#303F9F">-->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Web Application Manifest -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
+
+    <!-- Windows Theme color -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Taxa Chart">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Dot Plot">
+
+    <!-- Force Microsoft use latest web tech -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <link rel="shortcut icon" href="data:,">
+    <!-- END meta -->
+
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-100-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-700-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto/files/roboto-latin-900-normal.woff2" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/noto-sans/files/noto-sans-latin-700-normal.woff2" as="font" crossorigin="anonymous">
+
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-100-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-200-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-300-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-500-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-600-normal.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-700-normal.woff2" as="font" crossorigin="anonymous">
+
+    <style>
+        /* roboto-latin-100-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 100;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-100-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-100-normal.woff') format('woff');
+
+        }
+
+        /* roboto-latin-300-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 300;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-300-normal.woff') format('woff');
+
+        }
+
+        /* roboto-latin-400-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff') format('woff');
+
+        }
+
+        /* roboto-latin-500-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 500;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-500-normal.woff') format('woff');
+
+        }
+
+        /* roboto-latin-700-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 700;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-700-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-700-normal.woff') format('woff');
+
+        }
+
+        /* roboto-latin-900-normal*/
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 900;
+            src:
+                url('./node_modules/@fontsource/roboto/files/roboto-latin-900-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto/files/roboto-latin-900-normal.woff') format('woff');
+
+        }
+
+
+        /* noto-sans-latin-400-normal*/
+        @font-face {
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src:
+                url('./node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff2') format('woff2'), url('./node_modules/@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff') format('woff');
+
+        }
+
+        /* noto-sans-latin-700-normal*/
+        @font-face {
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 700;
+            src:
+                url('./node_modules/@fontsource/noto-sans/files/noto-sans-latin-700-normal.woff2') format('woff2'), url('./node_modules/@fontsource/noto-sans/files/noto-sans-latin-700-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-100-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 100;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-100-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-100-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-200-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 200;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-200-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-200-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-300-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 300;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-300-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-300-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-400-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 400;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-500-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 500;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-500-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-500-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-600-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 600;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-600-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-600-normal.woff') format('woff');
+
+        }
+
+        /* roboto-mono-latin-700-normal*/
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-display: swap;
+            font-weight: 700;
+            src: url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-700-normal.woff2') format('woff2'), url('./node_modules/@fontsource/roboto-mono/files/roboto-mono-latin-700-normal.woff') format('woff');
+
+        }
+    </style>
+
+    <!--   js-deps -->
+    <script src="assets/echarts.common.min-33b213d1.js"></script>
+    <script src="assets/dataTool.min-3ed382f2.js"></script>
+    <script src="assets/URI.min-4ee9a2dd.js"></script>
+    <script src="assets/async.min-82cc9897.js"></script>
+    <script src="assets/ecStat.min-e9bc190f.js"></script>
+    
+
+    <style is="custom-style">
+        :root {
+            --text-color: #555;
+            --dark-primary-color: #212121;
+            --default-primary-color: #2f2f2f;
+            --light-primary-color: #fafafa;
+            --light-secondary-color: #EDEDED;
+            --text-primary-color: #FFFFFF;
+            --accent-color: #8BC34A;
+            --light-button-color: #77eb38;
+            --dark-button-color: #6ad520;
+            --primary-text-color: #212121;
+            --secondary-text-color: #727272;
+            --divider-color: #ccc;
+            --hover-color: #eee;
+            --selected-color: #ddd;
+
+            --app-back-color: #fff;
+            --app-font-color: #555;
+            --app-inactive-font-color: #666;
+
+            --input-button-back-color: #F4511E;
+            --input-border-color: #DD2C00;
+            --input-button-back-hover-color: #FF6F00;
+            --input-button-back-active-color: #D84315;
+
+            --menu-border-color: #bbb;
+            --menu-hover-color: #3188FB;
+            --menu-hover-font-color: #fff;
+            --menu-back-color: #f0f0f0;
+            --menu-bar-back-color: #393939;
+            --menu-font-color: #222;
+
+            --min-viewport-height: 400px;
+            --min-viewport-width: 600px;
+            /* --menu-button-font-color: #555; */
+        }
+
+        html, body {
+            font-family: 'Noto Sans', sans-serif;
+            color: #555;
+            height: 100%;
+            margin: 0;
+            min-height: var(--min-viewport-height);
+            min-width: var(--min-viewport-width);
+            overflow: hidden;
+        }
+
+        #echarts_container {
+            width: 100%;
+            height: 100%;
+            min-height: var(--min-viewport-height);
+        }
+    </style>
+</head>
+
+<body>
+    <chart-web-part><div id="echarts_container"></div></chart-web-part>
+
+
+<script type="module" src="./ChartWebPart.js"></script></body></html>

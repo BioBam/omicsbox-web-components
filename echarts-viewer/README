@@ -1,0 +1,13 @@
+Using yarn (version 1.X).
+
+Install dependencies:
+
+$> yarn install
+
+Upgrade some dependency (most likely web-libraries repository):
+
+$> yarn upgrade <package-name>
+
+Build using rollup:
+
+$> yarn build
