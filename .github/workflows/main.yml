@@ -44,25 +44,35 @@ jobs:
             cd echarts-viewer
             npm run build --if-present
 
-      - name: Saving build on cache...
-        id: cache-build
-        uses: actions/cache@v3.0.2
+      - name: Saving build on artifact...
+        id: artifact-build
+        uses: actions/upload-artifact@v3.0.0
         with:
-          # A list of files, directories, and wildcard patterns to cache and restore
-          path: ./build/
-          # An explicit key for restoring and saving the cache
-          key: ${{ runner.os }}-build
+          # Artifact name
+          name: echarts-viewer-build
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ./dist/
+          # The desired behavior if no files are found using the provided path.
+          error: Build not found.
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetching build artifact...
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: echarts-viewer-build
+          path: ./dist/
 
       - name: Deploying Build to omicsboxweb repository...
-        id: publish-build-to-web
-        if: steps.cache-build.outputs.cache-hit == 'true'
+
         run: |
           cd echarts-viewer
           eval `ssh-agent -s`
           ssh-add - <<< ${secrets.WEB_REPOSITORY_PRIVATE_KEY}
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
           git checkout develop
-          cp -r ./build/* ./omicsboxweb-amplify/public/echarts-viewer/
+          cp -r ./dist/* ./omicsboxweb-amplify/public/echarts-viewer/
           git add .
           git commit -m "{{ env.GITHUB_SHA }}-Updates echart-viewer"
           git push origin develop
