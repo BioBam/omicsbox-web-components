@@ -26,7 +26,7 @@ jobs:
       - name: Configuring environment
         run: |
           eval `ssh-agent -s`
-          ssh-add - <<< ${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}
+          ssh-add - <<< '${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}'
  
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
