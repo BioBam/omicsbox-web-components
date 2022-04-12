@@ -4,7 +4,7 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push events but only for the main branch
   push:
     branches: [ main ]
 
@@ -23,6 +23,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Configuring environment
+        run: ssh-add - <<< ${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}
+ 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -44,5 +47,6 @@ jobs:
        - uses: actions/checkout@develop
        - name: Web deployment
          run: |
+          ssh-add - <<< ${secrets.WEB_REPOSITORY_PRIVATE_KEY}
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
           
