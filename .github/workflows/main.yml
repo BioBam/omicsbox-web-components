@@ -24,7 +24,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Configuring environment
-        run: ssh-add - <<< ${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< ${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}
  
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -47,6 +49,7 @@ jobs:
        - uses: actions/checkout@develop
        - name: Web deployment
          run: |
+          eval `ssh-agent -s`
           ssh-add - <<< ${secrets.WEB_REPOSITORY_PRIVATE_KEY}
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
           
