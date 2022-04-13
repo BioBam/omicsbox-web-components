@@ -70,7 +70,7 @@ jobs:
         run: |
           cd echarts-viewer
           eval `ssh-agent -s`
-          ssh-add - <<< ${secrets.WEB_REPOSITORY_PRIVATE_KEY}
+          ssh-add - <<< '${{secrets.WEB_REPOSITORY_PRIVATE_KEY}}'
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
           git checkout develop
           cp -r ./dist/* ./omicsboxweb-amplify/public/echarts-viewer/
