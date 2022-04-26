@@ -74,7 +74,7 @@ jobs:
 
       - name: Copying build artifact to omicsboxweb repository...
         run: |
-          cp -r ./echarts-viewer/build/* ./omicsboxweb-amplify/public/echarts-viewer/
+          cp -r ./echarts-viewer/build/* ./omicsboxweb-amplify/public/
       
       - name: Pushing to omicsboxweb repository...
         uses: cpina/github-action-push-to-another-repository@v1.4.2
