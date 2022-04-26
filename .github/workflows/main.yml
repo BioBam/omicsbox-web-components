@@ -70,7 +70,7 @@ jobs:
         run: |
           cd echarts-viewer
           eval `ssh-agent -s`
-          ssh-add - <<< ${secrets.WEB_REPOSITORY_PRIVATE_KEY}
+          ssh-add - <<< '${secrets.WEB_REPOSITORY_PRIVATE_KEY}'
           git config --global user.email "{{secrets.WEB_REPOSITORY_EMAIL}}"
           git config --global user.name "{{secrets.WEB_REPOSITORY_USERNAME}}"
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
