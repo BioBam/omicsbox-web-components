@@ -67,7 +67,7 @@ jobs:
       - name: Fetching omicsboxweb repository...
         uses: actions/checkout@v3
         with:
-          name: BioBam/omicsboxweb-amplify
+          repository: BioBam/omicsboxweb-amplify
           ref: dev
           ssh-key: ${{secrets.WEB_REPOSITORY_PRIVATE_KEY}}
           path: ./omicsboxweb-amplify
