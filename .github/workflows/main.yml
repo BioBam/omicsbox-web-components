@@ -74,7 +74,7 @@ jobs:
           git config --global user.email "{{secrets.WEB_REPOSITORY_EMAIL}}"
           git config --global user.name "{{secrets.WEB_REPOSITORY_USERNAME}}"
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
-          git remote add origin https://github.com/BioBam/omicsboxweb-amplify.git
+          git remote add origin git@github.com/BioBam/omicsboxweb-amplify.git
           git fetch
           git checkout dev
           cp -r ./dist/* ./omicsboxweb-amplify/public/echarts-viewer/
