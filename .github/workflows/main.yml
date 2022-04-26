@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Installing dependencies...
-        run:  |
+        run: |
           eval `ssh-agent -s`
           ssh-add - <<< '${{secrets.WEB_LIBRARIES_PRIVATE_KEY}}'
           cd echarts-viewer
@@ -41,8 +41,8 @@ jobs:
 
       - name: Building...
         run: |
-            cd echarts-viewer
-            npm run build --if-present
+          cd echarts-viewer
+          npm run build --if-present
 
       - name: Saving build on artifact...
         id: artifact-build
@@ -56,6 +56,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - name: Fetching build artifact...
         uses: actions/download-artifact@v3.0.0
@@ -72,10 +74,9 @@ jobs:
           git config --global user.email "{{secrets.WEB_REPOSITORY_EMAIL}}"
           git config --global user.name "{{secrets.WEB_REPOSITORY_USERNAME}}"
           git clone https://github.com/BioBam/omicsboxweb-amplify.git
-          git checkout develop
+          git fetch
+          git checkout dev
           cp -r ./dist/* ./omicsboxweb-amplify/public/echarts-viewer/
           git add .
           git commit -m "{{ env.GITHUB_SHA }}-Updates echart-viewer"
-          git push origin develop
-          
-          
+          git push dev
