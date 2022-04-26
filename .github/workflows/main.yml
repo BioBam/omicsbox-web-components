@@ -21,7 +21,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -65,19 +64,25 @@ jobs:
           name: echarts-viewer-build
           path: ./echarts-viewer/build/
 
-      - name: Deploying Build to omicsboxweb repository...
+      - name: Fetching omicsboxweb repository...
+        uses: actions/checkout@v3
+        with:
+          name: BioBam/omicsboxweb-amplify
+          ref: dev
+          ssh-key: ${{secrets.WEB_REPOSITORY_PRIVATE_KEY}}
+          path: ./omicsboxweb-amplify
 
+      - name: Copying build artifact to omicsboxweb repository...
         run: |
-          cd echarts-viewer
-          eval `ssh-agent -s`
-          ssh-add - <<< '${{secrets.WEB_REPOSITORY_PRIVATE_KEY}}'
-          git config --global user.email "{{secrets.WEB_REPOSITORY_EMAIL}}"
-          git config --global user.name "{{secrets.WEB_REPOSITORY_USERNAME}}"
-          git clone https://github.com/BioBam/omicsboxweb-amplify.git
-          git remote add origin git@github.com/BioBam/omicsboxweb-amplify.git
-          git fetch
-          git checkout dev
-          cp -r ./dist/* ./omicsboxweb-amplify/public/echarts-viewer/
-          git add .
-          git commit -m "{{ env.GITHUB_SHA }}-Updates echart-viewer"
-          git push origin dev --force
+          cp -r ./echarts-viewer/build/* ./omicsboxweb-amplify/public/echarts-viewer/
+      
+      - name: Pushing to omicsboxweb repository...
+        uses: cpina/github-action-push-to-another-repository@v1.4.2
+        env:
+          API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
+        with:
+          source-directory: echarts-viewer/
+          destination-repository-name: 'BioBam/omicsboxweb-amplify'
+          user-email: lmiret@biobam.com
+          target-branch: dev
+          target-directory: public/echarts-viewer
