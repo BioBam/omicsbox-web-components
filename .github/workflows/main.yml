@@ -81,7 +81,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{secrets.API_TOKEN_GITHUB}}
         with:
-          source-directory: echarts-viewer/
+          source-directory: echarts-viewer/build
           destination-github-username: 'BioBam'
           destination-repository-name: 'omicsboxweb-amplify'
           user-email: lmiret@biobam.com
