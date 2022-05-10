@@ -30,7 +30,7 @@ export class ChartWebPart extends WebViewerMixin(LitElement) {
                 This is hardcoded for now for quick testing, and the URL should point to our local
                 server containing the mockup json data.
             */
-    let wsUrl = "http://localhost:3000/rest_data";
+    let wsUrl = "https://d2crafnhauomq1.cloudfront.net/rest_data";
 
     this.webSocketRequest = new WebSocketRequest({
       url: wsUrl,
