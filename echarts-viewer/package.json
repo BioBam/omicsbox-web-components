@@ -18,7 +18,7 @@
     "merge": "^1.2.1",
     "mixwith": "^0.1.1",
     "resize-observer-polyfill": "^1.5.1",
-    "urijs": "^1.19.2",
+    "urijs": "^1.19.11",
     "web-libraries": "git+ssh://git@github.com:BioBam/web-libraries.git#develop"
   },
   "devDependencies": {
