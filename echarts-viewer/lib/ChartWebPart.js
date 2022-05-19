@@ -18,6 +18,8 @@ export class ChartWebPart extends WebViewerMixin(LitElement) {
     var modelId = uri.segment(0);
     var host = uri.domain() == "" ? uri.hostname() : uri.domain();
 
+    // var getUrl = window.location;
+    // var baseUrl = `${getUrl.protocol}//localhost:${getUrl.port}`;
     // if (isNaN(parseInt(modelId))) {
     //   console.log(
     //     "No model ID found for: ws://" + host + ":" + uri.port() + "/model/"
@@ -30,7 +32,7 @@ export class ChartWebPart extends WebViewerMixin(LitElement) {
                 This is hardcoded for now for quick testing, and the URL should point to our local
                 server containing the mockup json data.
             */
-    let wsUrl = "https://d2crafnhauomq1.cloudfront.net/rest_data";
+    let wsUrl = `https://dev.omicsbox.biobam.com/rest_data`;
 
     this.webSocketRequest = new WebSocketRequest({
       url: wsUrl,
