@@ -13,12 +13,12 @@
     "@fontsource/noto-sans": "^4.2.1",
     "@fontsource/roboto": "^4.2.1",
     "@fontsource/roboto-mono": "^4.2.2",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "lit": "^2.0.0-rc.2",
     "merge": "^1.2.1",
     "mixwith": "^0.1.1",
     "resize-observer-polyfill": "^1.5.1",
-    "urijs": "^1.19.2",
+    "urijs": "^1.19.11",
     "web-libraries": "git+ssh://git@github.com:BioBam/web-libraries.git#develop"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-summary": "^1.3.0",
     "rollup-plugin-terser": "^7.0.2",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "terser": "^4.8.0",
     "watch": "^1.0.2"
   }
