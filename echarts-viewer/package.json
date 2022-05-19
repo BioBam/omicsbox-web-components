@@ -13,7 +13,7 @@
     "@fontsource/noto-sans": "^4.2.1",
     "@fontsource/roboto": "^4.2.1",
     "@fontsource/roboto-mono": "^4.2.2",
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "lit": "^2.0.0-rc.2",
     "merge": "^1.2.1",
     "mixwith": "^0.1.1",
