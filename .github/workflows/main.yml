@@ -67,14 +67,14 @@ jobs:
       - name: Fetching omicsboxweb repository...
         uses: actions/checkout@v3
         with:
-          repository: BioBam/omicsboxweb-amplify
+          repository: BioBam/omicsbox-web
           ref: dev
           ssh-key: ${{secrets.WEB_REPOSITORY_PRIVATE_KEY}}
-          path: ./omicsboxweb-amplify
+          path: ./omicsbox-web
 
       - name: Copying build artifact to omicsboxweb repository...
         run: |
-          cp -r ./echarts-viewer/build/* ./omicsboxweb-amplify/public/
+          cp -r ./echarts-viewer/build/* ./omicsbox-web/public/
       
       - name: Pushing to omicsboxweb repository...
         uses: cpina/github-action-push-to-another-repository@v1.4.2
@@ -83,7 +83,7 @@ jobs:
         with:
           source-directory: echarts-viewer/build
           destination-github-username: 'BioBam'
-          destination-repository-name: 'omicsboxweb-amplify'
+          destination-repository-name: 'omicsbox-web'
           user-email: lmiret@biobam.com
           target-branch: dev
           target-directory: public/echarts-viewer
