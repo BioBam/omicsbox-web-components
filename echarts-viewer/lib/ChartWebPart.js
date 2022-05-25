@@ -4,6 +4,7 @@ import "./ChartViewer.js";
 import "./ChartViewerSidebar.js";
 import { WebSocketRequest } from "./websocket-request.js";
 
+
 // We need to make a global reference to this function to make it
 // compatible with old viewers that still use echarts 4 with
 // individual modules. Once all of them transition to the new echarts 5,
@@ -32,7 +33,7 @@ export class ChartWebPart extends WebViewerMixin(LitElement) {
                 This is hardcoded for now for quick testing, and the URL should point to our local
                 server containing the mockup json data.
             */
-    let wsUrl = `https://dev.omicsbox.biobam.com/rest_data`;
+    let wsUrl = `http://192.168.1.214:8080`;
 
     this.webSocketRequest = new WebSocketRequest({
       url: wsUrl,
