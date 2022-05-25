@@ -33,7 +33,7 @@ export class ChartWebPart extends WebViewerMixin(LitElement) {
                 This is hardcoded for now for quick testing, and the URL should point to our local
                 server containing the mockup json data.
             */
-    let wsUrl = `http://192.168.1.214:8080`;
+    let wsUrl = `https://resources.biobam.com/omicsbox-web-data/`;
 
     this.webSocketRequest = new WebSocketRequest({
       url: wsUrl,
